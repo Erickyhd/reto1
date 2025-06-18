@@ -1,35 +1,351 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React from "react";
+import { useState } from "react";
 function App() {
-  const [count, setCount] = useState(0)
+  const [ocultar, setOcultar] = useState(false);
+  const columnas = [
+    "codDig",
+    "Producto",
+    "Laboratorio",
+    "StockActual",
+    "StockMinimo",
+    "Acciones",
+  ];
+  const datos = [
+    {
+      codDig: 1,
+      producto: "Paracetamol 500mg",
+      laboratorio: "PharmaTech",
+      stockActual: 120,
+      stockMinimo: 50,
+    },
+    {
+      codDig: 2,
+      producto: "Ibuprofeno 400mg",
+      laboratorio: "BioMed",
+      stockActual: 80,
+      stockMinimo: 30,
+    },
+    {
+      codDig: 3,
+      producto: "Omeprazol 20mg",
+      laboratorio: "MedLife",
+      stockActual: 200,
+      stockMinimo: 75,
+    },
+    {
+      codDig: 4,
+      producto: "Amoxicilina 500mg",
+      laboratorio: "FarmaPlus",
+      stockActual: 60,
+      stockMinimo: 20,
+    },
+    {
+      codDig: 5,
+      producto: "Loratadina 10mg",
+      laboratorio: "SaludPharma",
+      stockActual: 150,
+      stockMinimo: 60,
+    },
+    {
+      codDig: 6,
+      producto: "Ciprofloxacino 500mg",
+      laboratorio: "MediHealth",
+      stockActual: 95,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 7,
+      producto: "Metformina 850mg",
+      laboratorio: "VitalPharma",
+      stockActual: 130,
+      stockMinimo: 55,
+    },
+    {
+      codDig: 8,
+      producto: "Atorvastatina 20mg",
+      laboratorio: "CardioMed",
+      stockActual: 170,
+      stockMinimo: 70,
+    },
+    {
+      codDig: 9,
+      producto: "Losartan 50mg",
+      laboratorio: "RenalCare",
+      stockActual: 110,
+      stockMinimo: 45,
+    },
+    {
+      codDig: 10,
+      producto: "Furosemida 40mg",
+      laboratorio: "DiurePharm",
+      stockActual: 75,
+      stockMinimo: 30,
+    },
+    {
+      codDig: 11,
+      producto: "Cetirizina 10mg",
+      laboratorio: "AllerTech",
+      stockActual: 140,
+      stockMinimo: 65,
+    },
+    {
+      codDig: 12,
+      producto: "Salbutamol 100mcg",
+      laboratorio: "RespiraMed",
+      stockActual: 90,
+      stockMinimo: 35,
+    },
+    {
+      codDig: 13,
+      producto: "Ranitidina 150mg",
+      laboratorio: "GastroPlus",
+      stockActual: 160,
+      stockMinimo: 70,
+    },
+    {
+      codDig: 14,
+      producto: "Clonazepam 2mg",
+      laboratorio: "NeuroPharm",
+      stockActual: 85,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 15,
+      producto: "Levotiroxina 50mcg",
+      laboratorio: "EndoCare",
+      stockActual: 200,
+      stockMinimo: 75,
+    },
+    {
+      codDig: 16,
+      producto: "Insulina NPH",
+      laboratorio: "DiabetMed",
+      stockActual: 50,
+      stockMinimo: 20,
+    },
+    {
+      codDig: 17,
+      producto: "Azitromicina 500mg",
+      laboratorio: "AntibioTech",
+      stockActual: 180,
+      stockMinimo: 80,
+    },
+    {
+      codDig: 18,
+      producto: "Carbamazepina 200mg",
+      laboratorio: "NeuroPlus",
+      stockActual: 70,
+      stockMinimo: 25,
+    },
+    {
+      codDig: 19,
+      producto: "Dexametasona 4mg",
+      laboratorio: "InflamaCare",
+      stockActual: 145,
+      stockMinimo: 60,
+    },
+    {
+      codDig: 20,
+      producto: "Fluoxetina 20mg",
+      laboratorio: "PsycheMed",
+      stockActual: 95,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 21,
+      producto: "Meloxicam 15mg",
+      laboratorio: "ArthroPharm",
+      stockActual: 130,
+      stockMinimo: 55,
+    },
+    {
+      codDig: 22,
+      producto: "Sildenafil 50mg",
+      laboratorio: "VitalMen",
+      stockActual: 175,
+      stockMinimo: 70,
+    },
+    {
+      codDig: 23,
+      producto: "Doxazosina 4mg",
+      laboratorio: "UroCare",
+      stockActual: 110,
+      stockMinimo: 45,
+    },
+    {
+      codDig: 24,
+      producto: "Amlodipino 5mg",
+      laboratorio: "CardioPlus",
+      stockActual: 155,
+      stockMinimo: 65,
+    },
+    {
+      codDig: 25,
+      producto: "Sertralina 50mg",
+      laboratorio: "MoodPharm",
+      stockActual: 200,
+      stockMinimo: 80,
+    },
+    {
+      codDig: 26,
+      producto: "Rosuvastatina 10mg",
+      laboratorio: "CardioHealth",
+      stockActual: 190,
+      stockMinimo: 85,
+    },
+    {
+      codDig: 27,
+      producto: "Propranolol 40mg",
+      laboratorio: "BetaBlock",
+      stockActual: 105,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 28,
+      producto: "Diclofenaco 50mg",
+      laboratorio: "AntiInflame",
+      stockActual: 150,
+      stockMinimo: 55,
+    },
+    {
+      codDig: 29,
+      producto: "Gabapentina 300mg",
+      laboratorio: "NeuroCare",
+      stockActual: 125,
+      stockMinimo: 60,
+    },
+    {
+      codDig: 30,
+      producto: "Budesonida 200mcg",
+      laboratorio: "RespiraPlus",
+      stockActual: 75,
+      stockMinimo: 35,
+    },
+    {
+      codDig: 31,
+      producto: "Tamsulosina 0.4mg",
+      laboratorio: "UroHealth",
+      stockActual: 140,
+      stockMinimo: 65,
+    },
+    {
+      codDig: 32,
+      producto: "Venlafaxina 75mg",
+      laboratorio: "PsychePlus",
+      stockActual: 130,
+      stockMinimo: 50,
+    },
+    {
+      codDig: 33,
+      producto: "Clarithromicina 500mg",
+      laboratorio: "AntibioMax",
+      stockActual: 170,
+      stockMinimo: 75,
+    },
+    {
+      codDig: 34,
+      producto: "Prednisona 5mg",
+      laboratorio: "CorticoPharm",
+      stockActual: 85,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 35,
+      producto: "Warfarina 5mg",
+      laboratorio: "AnticoagCare",
+      stockActual: 110,
+      stockMinimo: 45,
+    },
+    {
+      codDig: 36,
+      producto: "Esomeprazol 40mg",
+      laboratorio: "GastroMed",
+      stockActual: 180,
+      stockMinimo: 80,
+    },
+    {
+      codDig: 37,
+      producto: "Risperidona 2mg",
+      laboratorio: "NeuroBalance",
+      stockActual: 75,
+      stockMinimo: 30,
+    },
+    {
+      codDig: 38,
+      producto: "Montelukast 10mg",
+      laboratorio: "RespiraHealth",
+      stockActual: 160,
+      stockMinimo: 70,
+    },
+    {
+      codDig: 39,
+      producto: "Levofloxacino 750mg",
+      laboratorio: "AntibioUltra",
+      stockActual: 95,
+      stockMinimo: 40,
+    },
+    {
+      codDig: 40,
+      producto: "Zolpidem 10mg",
+      laboratorio: "SleepAid",
+      stockActual: 50,
+      stockMinimo: 20,
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="">
+      <div className="flex justify-between p-2 bg-gray-300 w-full font-serif ">
+        <input
+          type="text"
+          placeholder="Buscar"
+          className="bg-white outline-none p-1 m-1 rounded-lg"
+        />
+        <h3>Paginacion</h3>
+        <section className="md:flex gap-2 font-bold hidden ">
+          <button className="bg-blue-400 text-white rounded-lg m-1 p-1 hover:cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
+            Excel productos
+          </button>
+          <button className="bg-blue-400 text-white rounded-lg m-1 p-1 hover:cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
+            Excel
+          </button>
+          <button className="bg-blue-400 text-white rounded-lg m-1 p-1 hover:cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
+            CSV
+          </button>
+          <button className="bg-blue-400 text-white rounded-lg m-1 p-1 hover:cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
+            PDF
+          </button>
+        </section>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="w-full overflow-auto">
+        <table className="w-full">
+          <thead>
+            <tr>
+              {columnas.map((item) => (
+                <th key={item}>{item}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {datos.map((item) => (
+              <tr key={item.codDig}>
+                <td>{item.codDig}</td>
+                <td>{item.producto}</td>
+                <td>{item.laboratorio}</td>
+                <td>{item.stockActual}</td>
+                <td>{item.stockMinimo}</td>
+                <td>
+                  <button className="bg-blue-400 text-white rounded-lg m-1 p-1 hover:cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
+                    🖋️
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
